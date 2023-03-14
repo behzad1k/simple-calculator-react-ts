@@ -31,7 +31,7 @@ export const SingleButton: FC<ButtonTypes> = ({name,color,value,background}) =>{
     const getPostFullNum = (str:string) : string => {
         let i = 0;
         let newStr = ''
-        while(isNumber(str.charAt(i))){
+        while(isNumber(str.charAt(i)) || str.charAt(i) === '-'|| str.charAt(i) === '.'){
             newStr += str.charAt(i);
             i++;
         }
@@ -43,7 +43,7 @@ export const SingleButton: FC<ButtonTypes> = ({name,color,value,background}) =>{
     const getPreFullNum = (str:string) : string => {
         let i = str.length -1;
         let newStr = ''
-        while(isNumber(str.charAt(i))){
+        while(isNumber(str.charAt(i)) || str.charAt(i) === '-'|| str.charAt(i) === '.'){
             newStr += str.charAt(i);
             i--;
         }
@@ -90,6 +90,7 @@ export const SingleButton: FC<ButtonTypes> = ({name,color,value,background}) =>{
         receives one string of numbers and + and - operands and outputs the calculated sequence result
      */
     const calculateAddSub = (seq:string):number => {
+        console.log(seq)
         for (let i = 0; i < seq.length; i++) {
             let postNum:string = '';
             let preNum: string = '';
@@ -126,16 +127,18 @@ export const SingleButton: FC<ButtonTypes> = ({name,color,value,background}) =>{
         /*
             Validations are done here
          */
-
         if((sequence === '' &&
             (isNumber(getLastChar(sequence)) || isNumber(value.value))) ||
-            value.value === 'C')
+            value.value === 'C'||
+            sequence === '' && value.value === '+'||
+            sequence === '' && value.value === '-'
+        )
             dispatch(updateSequence(value))
         else if(value.value === 'AC'){
             dispatch(updateSequence(value))
             dispatch(showAnswer({value:0}))
         }
-        else if((!isNumber(getLastChar(sequence)) && !isNumber(value.value)) ||
+        else if((!isNumber(getLastChar(sequence)) && !isNumber(value.value) && value.value !== '-' && value.value !== '.') ||
             (sequence === '' && value.value === '*') ||
             (sequence === '' && value.value === '/') ||
             (sequence === '' && value.value === '%')){

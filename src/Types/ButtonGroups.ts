@@ -31,7 +31,7 @@ export const LightButtonGroups: any = [
             {"name": 'clear',"background": "#FFF", "color": "#A5A5A5", "value": 'AC'} as ButtonTypes,
             {"name": 'remove',"background": "#FFF", "color": "#A5A5A5", "value": 'C'} as ButtonTypes,
             {"name": 'div',"background": "#ADD8FF", "color": "#339DFF", "value": '/'} as ButtonTypes,
-            {"name": 'percent',"background": "#ADD8FF", "color": "#339DFF", "value": 'j'} as ButtonTypes,
+            {"name": 'percent',"background": "#ADD8FF", "color": "#339DFF", "value": '%'} as ButtonTypes,
         ],[
             {"name": 'seven',"background": "#38B9FF", "color": "#FFF", "value": '7'} as ButtonTypes,
             {"name": 'eight',"background": "#38B9FF", "color": "#FFF", "value": '8'} as ButtonTypes,
