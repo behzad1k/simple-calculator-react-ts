@@ -9,7 +9,7 @@ interface ThemeState {
 
 const initialState: ThemeState = {
   theme: "dark",
-  buttonGroup: DarkButtonGroups,
+  buttonGroup: LightButtonGroups,
 };
 
 export const ThemeSlice = createSlice({
