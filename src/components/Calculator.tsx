@@ -61,7 +61,6 @@ const Calculator: FC = (): ReactElement => {
                     preNum = getPreFullNum(seq.slice(0,i))
                     postNum = getPostFullNum(seq.slice(i+1,seq.length))
                     const mul:number = Number(preNum) * Number(postNum);
-                    if (Number(preNum) < 0 && Number(postNum) < 0)
                     seq = seq.slice(0,i-preNum.length) + mul.toString() + seq.slice(i+postNum.length+1,seq.length)
                     i = seq.slice(0,i-preNum.length).length + mul.toString().length -1
                     break;
@@ -114,11 +113,8 @@ const Calculator: FC = (): ReactElement => {
     }
     const validation = (value:string): boolean => {
         const lastChar = getLastChar(sequence)
-        if(value === '+' || value === '-' || value === '.' || isNumber(value))
-            return true;
-        else if(value === '-' && !isNumber(lastChar)){
-
-        }
+        if(lastChar === '' && (value === '-' || value === '+' || value === '.') )
+            return true
         else if(!isNumber(value) && !isNumber(lastChar)) {
             return false
         }
