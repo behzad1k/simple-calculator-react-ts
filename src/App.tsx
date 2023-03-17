@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Calculator from './Components/Calculator'
-import {ToggleButton} from "./Components/ToggleButton";
+import Calculator from './components/Calculator'
+import ToggleButton from "./components/ToggleButton";
 
 function App() {
-  return (
-    <main className="App">
-        <ToggleButton />
+    const [theme,setTheme] = useState("light");
+    return (
+    <main className={"App " + theme}>
+        <ToggleButton theme={theme} setTheme={setTheme} />
         <Calculator />
     </main>
   );
